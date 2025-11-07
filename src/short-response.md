@@ -1,7 +1,6 @@
 # Short Responses
 
 For this short response assignment, aim to write a response with the following qualities (your instructor will give you feedback on these areas):
-
 - [] Addresses all parts of the prompt
 - [] Accurately uses relevant technical terminology
 - [] Is free of grammar and spelling mistakes (double check with grammarly!)
@@ -18,7 +17,6 @@ How would you explain to a budding developer what the drawbacks of using factory
 
 ## Response 1
 
-Factory functions can make many objects, but each one gets its own copy of the same functions. This can waste memory and make your code slower. Classes fix this by sharing methods between all objects made from them. They also have features like private fields and inheritance, which help you write cleaner and more organized code.
 
 ---
 
@@ -28,23 +26,6 @@ Explain what factors you should consider when deciding to make a property/method
 
 ## Response 2
 
-You should make a property or method private when you don’t want other code to change it directly. Private data is protected from mistakes or unwanted access. For example, an Employee class might keep things like a person’s salary or social security number private. Only methods inside the class can use or update that information safely.
-
-```js
-class Employee {
-  #ssn;
-  #salary;
-  constructor(name, ssn, salary) {
-    this.name = name;
-    this.#ssn = ssn;
-    this.#salary = salary;
-  }
-
-  #checkSSN(ssn) {
-    // internal logic
-  }
-}
-```
 
 ---
 
@@ -53,23 +34,6 @@ class Employee {
 Explain what factors you should consider when deciding to make a property/method static? Provide an example to support your response.
 
 ## Response 3
-
-A static property or method belongs to the class itself, not to each object made from it. You should make something static when it’s shared by all objects or doesn’t depend on the details of a single one. For example, a Cat class can keep track of how many cats were created using a static counter. You would call this directly from the class, not from each cat object.
-
-```js
-class Cat {
-  static totalCats = 0;
-
-  constructor(name) {
-    this.name = name;
-    Cat.totalCats += 1;
-  }
-
-  static countCats() {
-    return `There are ${Cat.totalCats} cats.`;
-  }
-}
-```
 
 ---
 
@@ -92,19 +56,3 @@ class Vault {
 Identify what the mistake is, explain why it is a problem, and suggest a way to fix it.
 
 ## Response 4
-
-The problem is that listSecrets() gives back the actual private array, so someone could change it from outside the class. That breaks the idea of keeping secrets hidden. The fix is to return a copy of the array so that the real one stays safe inside the class.
-
-```js
-class Vault {
-  #secrets = [];
-
-  addSecret(newSecret) {
-    this.#secrets.push(newSecret);
-  }
-
-  listSecrets() {
-    return [...this.#secrets]; // returns a copy
-  }
-}
-```
